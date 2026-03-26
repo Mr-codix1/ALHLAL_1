@@ -12,6 +12,8 @@
   const paramId     = document.getElementById('paramedic-id');
   const approverId  = document.getElementById('approver-id');
   const errorEl     = document.getElementById('lv-error');
+  const confirmRegRow = document.getElementById('confirm-register-row');
+  const confirmReg    = document.getElementById('confirm-register');
 
   window.updateForm = function () {
     if (typeSel.value === 'شفهي') {
@@ -20,6 +22,7 @@
     } else {
       fineRow.style.display = 'flex';
     }
+    if(confirmRegRow) confirmRegRow.style.display = 'flex'; // Always visible
   };
 
   window.issueWarning = function () {
@@ -40,8 +43,14 @@
     if (!pid)    errs.push('• معرّف المسعف مطلوب');
     if (!apprv)  errs.push('• معرّف الاعتماد مطلوب');
     
-    if (typeVal !== 'شفهي' && !fine) {
-      errs.push('• إدخال الغرامة مطلوب');
+    if (typeVal !== 'شفهي') {
+      if (!fine) {
+        errs.push('• إدخال الغرامة مطلوب');
+      }
+    }
+    
+    if (confirmReg && !confirmReg.checked) {
+      errs.push('• يرجى تأكيد تسجيل الإنذار/الغرامة بالجدول');
     }
 
     if (errs.length) {
