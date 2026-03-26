@@ -68,6 +68,8 @@
     if (!pcod) errs.push('• كود المسعف مطلوب');
     if (!pnam) errs.push('• الاسم مطلوب');
     if (!apprv) errs.push('• معرّف الاعتماد مطلوب');
+    const roleReqBox = document.getElementById('role-request-check');
+    if (roleReqBox && !roleReqBox.checked) errs.push('• يرجى تأكيد طلب رول');
     
     if (isBasic && payM === 'فاتورة' && !invUrlVal) {
       errs.push('• يجب إدخال رابط الفاتورة');

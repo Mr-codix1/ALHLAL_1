@@ -63,6 +63,8 @@
     const errs = [];
     if (!paramId)          errs.push('• معرّف المسعف مطلوب');
     if (isNaN(n) || n < 1) errs.push('• عدد الأيام يجب أن يكون 1 على الأقل');
+    const roleReqBox = document.getElementById('role-request-check');
+    if (roleReqBox && !roleReqBox.checked) errs.push('• يرجى تأكيد طلب رول');
 
     if (errs.length) {
       errorEl.innerHTML = errs.join('<br/>');

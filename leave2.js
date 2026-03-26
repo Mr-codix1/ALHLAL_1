@@ -120,6 +120,8 @@
     if (!paramId)              errs.push('• معرّف المسعف مطلوب');
     if (isNaN(dur) || dur <= 0) errs.push('• المدة يجب أن تكون أكبر من صفر');
     if (isNaN(bal))            errs.push('• الرصيد الحالي مطلوب');
+    const confirmBox = document.getElementById('confirm-register');
+    if (confirmBox && !confirmBox.checked) errs.push('• يرجى تأكيد تسجيل الإجازة بجدول الإجازات');
 
     if (errs.length) {
       errorEl.innerHTML = errs.join('<br/>');
