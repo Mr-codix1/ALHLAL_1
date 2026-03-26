@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>إجازة خارجية | الهلال الأحمر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="leave2.css"/>
+<link rel="stylesheet" href="ext_leave.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-brand">
+    <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/><path d="M20 10L20 30M10 20L30 20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
+    <span class="brand-title">شؤون الهلال الأحمر</span>
+  </div>
+  <div class="navbar-actions">
+    <button id="theme-toggle" class="theme-btn">
+      <span class="theme-icon dark-icon">🌙</span><span class="theme-icon light-icon">☀️</span>
+      <span class="theme-label dark-label">الوضع الفاتح</span><span class="theme-label light-label">الوضع الداكن</span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE WRAPPER -->
+<main class="lv-wrapper">
+
+  <!-- FORM CARD -->
+  <div class="lv-card">
+
+    <!-- Card Header -->
+    <div class="lv-card-header">
+      <div class="lv-header-right">
+        <a href="admin.html" class="lv-back">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M12 5l5 5-5 5M5 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          رجوع للقائمة
+        </a>
+      </div>
+      <div class="lv-header-center">
+        <span class="lv-header-icon">✈️</span>
+        <h1 class="lv-header-title">نموذج إجازة خارجية</h1>
+      </div>
+      <div class="lv-header-left"></div>
+    </div>
+
+    <!-- Fields Row: ID + عدد الأيام -->
+    <div class="lv-fields-row">
+
+      <div class="lv-field">
+        <label class="lv-label"><span class="lv-licon">🆔</span> ID المسعف</label>
+        <input id="paramedic-id" type="text" class="lv-input" placeholder="معرّف ديسكورد المسعف"/>
+      </div>
+
+      <div class="lv-field lv-field-xs">
+        <label class="lv-label"><span class="lv-licon">📅</span> عدد الأيام</label>
+        <input id="days" type="number" class="lv-input lv-input-num" placeholder="5" min="1" max="365" step="1"/>
+      </div>
+
+    </div>
+
+    <!-- Auto-calculated dates row -->
+    <div class="lv-fields-row lv-fields-row2 ext-dates-row">
+
+      <div class="lv-field lv-field-auto-date">
+        <label class="lv-label"><span class="lv-licon">🟢</span> من تاريخ</label>
+        <div class="ext-date-val" id="start-date-display">—</div>
+        <span class="lv-hint">تاريخ اليوم · توقيت السعودية</span>
+      </div>
+
+      <div class="ext-arrow">←</div>
+
+      <div class="lv-field lv-field-auto-date">
+        <label class="lv-label"><span class="lv-licon">🔴</span> إلى تاريخ</label>
+        <div class="ext-date-val" id="end-date-display">—</div>
+        <span class="lv-hint">يُحسب تلقائياً</span>
+      </div>
+
+    </div>
+
+    <!-- Actions -->
+    <div class="lv-actions">
+      <button class="lv-btn lv-btn-issue" id="btn-issue" onclick="issueExtLeave()">
+        <span>🖨️</span><span>إصدار الصادر</span>
+      </button>
+      <button class="lv-btn lv-btn-copy" id="btn-copy" onclick="copyExtLeave()" disabled>
+        <span>📋</span><span>نسخ الصادر</span>
+      </button>
+    </div>
+
+    <!-- Error -->
+    <div class="lv-error" id="lv-error"></div>
+
+  </div><!-- /lv-card -->
+
+  <!-- OUTPUT CARD -->
+  <div class="lv-output-card" id="lv-output-card">
+    <div class="lv-output-header">
+      <span>📤 الصادر الناتج</span>
+      <button class="lv-output-copy-btn" onclick="copyExtLeave()">📋 نسخ الصادر</button>
+    </div>
+    <pre class="lv-output-text" id="lv-output-text"></pre>
+  </div>
+
+</main>
+
+<footer class="footer" style="margin-top:auto;">
+  <div class="footer-inner"><p class="footer-text">© 2026 بوابة شؤون الهلال الأحمر</p></div>
+</footer>
+
+<script src="app.js"></script>
+<script src="ext_leave.js"></script>
+</body>
+</html>
